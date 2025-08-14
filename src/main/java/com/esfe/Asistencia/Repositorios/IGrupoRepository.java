@@ -6,5 +6,4 @@ import com.esfe.Asistencia.Modelos.Grupo;
 
 public interface IGrupoRepository extends JpaRepository<Grupo, Integer>{
     
-
 }
