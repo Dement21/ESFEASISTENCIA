@@ -10,13 +10,13 @@ import com.esfe.Asistencia.Modelos.DocenteGrupo;
 public interface IDocenteGrupoService {
 
     List<DocenteGrupo> obtenerTodos();
+    
+    Page<DocenteGrupo> buscarTodosPaginados(Pageable pageable);
 
     DocenteGrupo buscarPorId(Integer id);
 
-    DocenteGrupo crearOEditar(DocenteGrupo docentegrupo);
+    DocenteGrupo crearOEditar(DocenteGrupo docenteGrupo);
 
     void eliminarPorId(Integer id);
-
-    Page<DocenteGrupo> buscarTodosPaginados(Pageable pageable);
      
 }

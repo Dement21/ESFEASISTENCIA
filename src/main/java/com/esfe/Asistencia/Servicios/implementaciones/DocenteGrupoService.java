@@ -6,10 +6,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-
+import com.esfe.Asistencia.Modelos.DocenteGrupo;
 import com.esfe.Asistencia.Repositorios.IDocenteGrupoRepository;
 import com.esfe.Asistencia.Servicios.Interfaces.IDocenteGrupoService;
-import com.esfe.Asistencia.Modelos.DocenteGrupo;
 
 @Service
 public class DocenteGrupoService implements IDocenteGrupoService{

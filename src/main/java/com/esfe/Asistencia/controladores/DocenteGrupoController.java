@@ -1,17 +1,16 @@
 package com.esfe.Asistencia.controladores;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.validation.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.mvc.support.*;
 
 import com.esfe.Asistencia.Modelos.*;
 import com.esfe.Asistencia.Servicios.Interfaces.*;
@@ -46,8 +45,7 @@ public class DocenteGrupoController {
         int totalPages = asignaciones.getTotalPages();
         if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-                                                 .boxed()
-                                                 .collect(Collectors.toList());
+                                                 .boxed().collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
         }
 
@@ -99,10 +97,8 @@ public class DocenteGrupoController {
 
     // ---------------- PROCESAR POST ----------------
     @PostMapping("/create")
-    public String saveNuevo(@ModelAttribute DocenteGrupo docenteGrupo,
-                            BindingResult result,
-                            RedirectAttributes redirect,
-                            Model model) {
+    public String saveNuevo(@ModelAttribute DocenteGrupo docenteGrupo,BindingResult result,
+                            RedirectAttributes redirect,Model model) {
 
         if (result.hasErrors()) {
             model.addAttribute("docentes", docenteService.obtenerTodos());
@@ -117,10 +113,8 @@ public class DocenteGrupoController {
     }
 
     @PostMapping("/edit")
-    public String saveEditado(@ModelAttribute DocenteGrupo docenteGrupo,
-                              BindingResult result,
-                              RedirectAttributes redirect,
-                              Model model) {
+    public String saveEditado(@ModelAttribute DocenteGrupo docenteGrupo,BindingResult result,
+                              RedirectAttributes redirect,Model model) {
 
         if (result.hasErrors()) {
             model.addAttribute("docentes", docenteService.obtenerTodos());
@@ -135,11 +129,10 @@ public class DocenteGrupoController {
     }
 
     @PostMapping("/delete")
-    public String deleteDocenteGrupo(@ModelAttribute DocenteGrupo docenteGrupo,
-                                     RedirectAttributes redirect) {
-
+    public String deleteDocenteGrupo(@ModelAttribute DocenteGrupo docenteGrupo,RedirectAttributes redirect) {
         docenteGrupoService.eliminarPorId(docenteGrupo.getId());
         redirect.addFlashAttribute("msg", "Asignación eliminada correctamente");
         return "redirect:/asignaciones";
     }
+
 }
